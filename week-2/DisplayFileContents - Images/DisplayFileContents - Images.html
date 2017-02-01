@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>File API</title>
+<script>
+function processFiles()
+{
+	//This function is called on the chenge event, which means when we 
+	//have chosen our files. filelist will contain all files chosen
+   	var filelist = document.getElementById('files').files;	
+	//We need to process the files one by one
+	for(var i=0; i<filelist.length; i++)
+	{
+		//Display the contents of the files one by one.
+		//Pass down one file at a time
+		writefiles(filelist[i]);
+	}
+}
+	
+function writefiles(file)
+{
+	//FileReader allows us to read the contents of a file on the computer
+	var reader = new FileReader();
+	//onload is activitated only when we have 
+	//read the entire contents of the file
+	//We need this as we only want to display the contents of a file after we have successfully read it.
+	reader.onload = function() 
+	{  
+		var img = new Image();
+		img.src = reader.result;
+		document.getElementById('output').appendChild(img);
+   	}
+	reader.onerror = function()
+	{
+		//onerror is an event handler for FileReader
+		alert("There was an error reading the file");
+	}
+	//Read the contents of the file and put the contents into the result attribute.
+	//Once this task is complete, the onload event will be activated. 
+   	reader.readAsDataURL(file);
+}
+</script>
+</head>
+<body>
+Select an image file: 
+<!--Accept multiple files but limit selection to image files -->
+<input type="file" accept="image/*" multiple id="files" onchange="processFiles()" />
+<div id="output"></div>
+</body>
+</html>
