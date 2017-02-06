@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+div {
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+    margin: 10px;
+}
+</style>
+<script>
+function allowDrop(ev) {
+	//By default, data/elements cannot be dropped in other elements. To allow a drop, we must prevent the default handling of the element.
+	//comment out this line to see what happens
+    ev.preventDefault();
+}
+
+function drag(ev) {
+	//Specify the value of the dragged data (this will be the id attribute of the item)
+    ev.dataTransfer.setData("text", ev.target.id);
+	//Print out the id
+	console.log(ev.target.id);
+}
+
+function drop(ev) {
+	//Called when a drag event is dropped
+    ev.preventDefault();
+	//Determine which data has been dragged, this will have been set by setData()
+    var data = ev.dataTransfer.getData("text");
+	console.log(data);
+	//Append the dragged item into the drop area
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<p id="drag1" draggable="true" ondragstart="drag(event)" width="336" height="69">Text to drag</p>
+
+<p id="drag2" draggable="true" ondragstart="drag(event)" width="336" height="69">More text to drag</p>
+
+<img src="DMR_120.jpg" draggable="true" ondragstart="drag(event)" id="drag3" alt="nothing" width="88" height="31">
+</body>
+</html>

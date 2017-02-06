@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Drag and Drop</title>
+</head>
+
+<body>
+Drop files here 
+<!-- Using the pre element ensures we don't lose formatting  -->
+<div id="dropzone" style="border:dashed; width:500px; height:200px; overflow:scroll"></div>
+<p>Click below to Store the file</p>
+<input type="button" value="Store File" id="store" />
+<p>Click below to Retrieve the file</p>
+<input type="button" value="Retrieve File" id="retrieve" />
+<br/>
+<input type="button" value="Clear Storage" id="clear" />
+<br/>
+<pre id="filetoget"></pre>
+<div id="image-loc"></div>
+
+<script src="TextDragAndDropAndStoreRetrieve.js">
+</script>
+</body>
+</html>
