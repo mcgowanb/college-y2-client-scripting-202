@@ -35,9 +35,7 @@ function retrieveFile()
 {
 	//Store the retrieved file in data
 	var data = localStorage.getItem('fileData');
-	var image = new Image();
-	image.src = data;
-	document.getElementById('image-loc').appendChild(image);
+	document.getElementById('image-loc').innerHTML = data;
 }
 
 function clearStorage()
