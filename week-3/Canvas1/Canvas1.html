@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+</head>
+
+<body onload="addEvents()">
+<script>
+    function addEvents() {
+        document.getElementById('draw').addEventListener("click", draw, false);
+    }
+
+    function draw() {
+        //Find the canvas element
+        var c = document.getElementById('canvas1');
+        //Call the getContext() method.
+        //getContext("2d") object is a built-in HTML5 object,
+        //with many properties and methods for drawing paths, boxes,
+        //circles, text, images, and more.
+        var ctx = c.getContext('2d');
+
+        //fillStyle can be a colour, gradient or pattern
+        //We could use it as follows: ctx.fillStyle = "rgb(255,0,0)";
+        ctx.fillStyle = "#ff0000";
+        //fillRect is used to draw the rectangle
+        //with the current fillstyle
+        //fillrect(x, y, width, heigth)
+        //FIND OUT WHAT X AND Y RELATE TO
+        ctx.fillRect(0, 00, 100, 150);
+
+        var d = document.getElementById('canvas2');
+        var ct = d.getContext('2d');
+        ct.fillStyle = "yellow";
+        ct.fillRect(0, 0, 100, 150);
+
+        var e = document.getElementById('canvas3');
+        var cx = e.getContext('2d');
+        //FIND OUT WHAT RGBA DOES
+        cx.fillStyle = "rgba(0,0,0,.2)";
+        cx.fillRect(0, 0, 100, 150);
+
+        var e = document.getElementById('canvas4');
+        var context = e.getContext('2d');
+        //For the moment just be aware that you can create gradients.
+        var my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
+        my_gradient.addColorStop(0, "black");
+        my_gradient.addColorStop(0.5, "red");
+        my_gradient.addColorStop(1, "white");
+        context.fillStyle = my_gradient;
+        context.fillRect(0, 0, 100, 150);
+
+        //TO DO: Create another rectangle in canvas5
+        //use w3Schools and the above code for help.
+        var x = document.getElementById('canvas5');
+        var myCtx = x.getContext('2d');
+        myCtx.fillStyle = "rgba(25,77,167,.8)";
+        myCtx.fillRect(0, 0, 350, 350);
+
+
+    }
+</script>
+<!--When the button is clicked, call the draw function-->
+<input type="button" id="draw" value="Draw"/>
+<!--Create the canvas element and give it an id, which we will need -->
+<div>
+    <canvas id="canvas5"></canvas>
+</div>
+<div>
+    <canvas id="canvas1"></canvas>
+</div>
+<div>
+    <canvas id="canvas2"></canvas>
+</div>
+<div>
+    <canvas id="canvas3"></canvas>
+</div>
+<div>
+    <canvas id="canvas4"></canvas>
+</div>
+</body>
+</html>

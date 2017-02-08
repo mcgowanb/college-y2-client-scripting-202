@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function addListeners() {
+        document.getElementById('draw').addEventListener("click", draw, false);
+    }
+
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 600;
+
+        var startX = 80;
+        var startY = 80;
+        var endX = 200;
+        var endY = 80;
+        var bottomCurveHeight = 140;
+        var topCurveHeight = 20;
+        var ctx = canvas.getContext('2d');
+
+        //draw bottom curve
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        //80 & 140 represent the first control point
+        //200 and 140 represent the second control point
+        ctx.bezierCurveTo(startX, bottomCurveHeight, endX, bottomCurveHeight, endX, endY);
+        ctx.stroke();
+
+        //draw top curve
+        ctx.moveTo(startX, startY);
+        ctx.bezierCurveTo(startX, topCurveHeight, endX, topCurveHeight, endX, endY);
+        ctx.stroke();
+
+
+    }
+
+</script>
+<body onload="addListeners()">
+<input type="button" id="draw" value="Draw"/>
+<div>
+    <canvas id="canvas" style="margin-left: 10px;"></canvas>
+</div>
+</body>
+</html>

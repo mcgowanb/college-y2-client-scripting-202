@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function addListeners() {
+        document.getElementById('draw').addEventListener("click", draw, false);
+    }
+
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = "Yellow";
+        ctx.fillRect(0, 0, 150, 150);
+
+        ctx.fillStyle = "Green";
+        ctx.fillRect(150,0,150,150);
+    }
+
+</script>
+<body onload="addListeners()">
+<input type="button" id="draw" value="Draw"/>
+<div>
+    <canvas id="canvas"></canvas>
+</div>
+</body>
+</html>

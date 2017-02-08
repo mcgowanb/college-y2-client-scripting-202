@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function addListeners() {
+        document.getElementById('draw').addEventListener("click", draw, false);
+    }
+
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        canvas.width  = 800;
+        canvas.height = 600;
+
+        var ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.ellipse(150, 150, 50, 150, 90 * Math.PI/180, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+
+</script>
+<body onload="addListeners()">
+<input type="button" id="draw" value="Draw"/>
+<div>
+    <canvas id="canvas" style="margin-left: 10px;"></canvas>
+</div>
+</body>
+</html>

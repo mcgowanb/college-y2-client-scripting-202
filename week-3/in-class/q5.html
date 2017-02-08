@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function addListeners() {
+        document.getElementById('draw').addEventListener("click", draw, false);
+    }
+
+    function draw() {
+        var canvas = document.getElementById("canvas");
+        canvas.width  = 800;
+        canvas.height = 600;
+
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = "#009400";
+        ctx.fillRect(0, 0, 150, 350);
+
+
+        ctx.fillStyle = "#FF6300";
+        ctx.fillRect(300,0,150,350);
+        ctx.strokeStyle = "#000";
+        ctx.strokeRect(0, 0, 450, 350);
+
+        ctx.moveTo(150,0);
+        ctx.lineTo(150,350);
+        ctx.stroke();
+
+        ctx.moveTo(300,0);
+        ctx.lineTo(300,350);
+        ctx.stroke();
+    }
+
+</script>
+<body onload="addListeners()">
+<input type="button" id="draw" value="Draw"/>
+<div>
+    <canvas id="canvas"></canvas>
+</div>
+</body>
+</html>
