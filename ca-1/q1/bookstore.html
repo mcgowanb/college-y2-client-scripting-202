@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookStore</title>
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
+</head>
+<body>
+<div class="row main-body">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Book Information</h3>
+        </div>
+        <div class="panel-body">
+            <form>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label for="book-name">Book Name</label>
+                            <input type="text" class="form-control" id="book-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <input type="text" class="form-control" id="author">
+                        </div>
+                        <div class="form-group">
+                            <label for="isbn">ISBN</label>
+                            <input type="text" class="form-control" id="isbn">
+                        </div>
+                    </div>
+                    <div class="col-md-4 upload-image" id="book-cover">
+                        <p class="text-center">Drop book cover here</p>
+                    </div>
+                    <!--<div id="dropzone" style="border:dashed; width:500px; height:200px; overflow:scroll"></div>-->
+
+                </div>
+
+                <div class="form-group">
+                    <label for="publisher">Publisher</label>
+                    <input type="text" class="form-control" id="publisher">
+                </div>
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="text" class="form-control" id="price" placeholder="€">
+                </div>
+                <div class="row">
+                    <div class="col-md-4 left">
+                        <button class="btn btn-warning" id="clear-list">Clear List</button>
+                    </div>
+                    <div class="col-md-4 center">
+                        <a href="bookRetrieve.html" class="btn btn-primary" role="button">View Books</a>
+                    </div>
+                    <div class="col-md-4 right">
+                        <button class="btn btn-success" id="add-book">Add Book</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="bg-success" id="info-message"></h3>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script
+        src="../js/jquery-3.1.1.min.js"></script>
+<script src="q1.js"></script>
+
+</body>
+</html>

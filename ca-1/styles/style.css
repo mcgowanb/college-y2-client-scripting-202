@@ -1,0 +1,37 @@
+.main-body {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+    float: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.upload img {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.upload-image {
+    border: 1px dashed lightgray;
+    height: 210px;
+    overflow: hidden;
+}
+.text-center{
+    color: lightgray;
+}
+#info-message{
+    display:none;
+}
