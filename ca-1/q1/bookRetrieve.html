@@ -7,10 +7,33 @@
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
 </head>
 <body onload="displayBooks()">
-<div class="row main-body book-record" style="display: none">
+<div class="row main">
+    <div class="col-md-8 book-display">
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="book-delete-title">Book Name</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="book-delete-title" placeholder="Name">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true" id="delete-by-name"></span>
+                </div>
+            </div>
+            <span class="help-block">Enter the name of the book you wish to delete from local storage.</span>
+        </div>
+        <button class="btn btn-warning clear-list">Clear List</button>
+    </div>
+
+</div>
+</div>
+
+
+<div class="row main book-record" style="display: none">
     <div class="panel panel-info">
         <div class="panel-heading">
-            <h3 class="panel-title">Book Information</h3>
+            <h3 class="panel-title">Book Information<span class="glyphicon glyphicon-trash" aria-hidden="true"
+                                                          onclick="removeBook(this)" id="delete"></span>
+            </h3>
         </div>
         <div class="panel-body">
             <div class="row">

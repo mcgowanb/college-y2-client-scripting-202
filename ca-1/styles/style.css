@@ -2,6 +2,9 @@
     width: 50%;
     margin: 20px auto;
 }
+.main{
+    margin: 20px;
+}
 
 .right {
     text-align: right;
@@ -34,4 +37,7 @@
 }
 #info-message{
     display:none;
+}
+.glyphicon{
+    float: right;
 }

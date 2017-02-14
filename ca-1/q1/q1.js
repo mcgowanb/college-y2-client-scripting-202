@@ -10,7 +10,7 @@ $(document).ready(function () {
     $(".clear-list").on("click", function (e) {
         e.preventDefault();
         localStorage.clear();
-        displayMessage("Storage has been emptied.")
+        window.location.reload();
     });
 
 
@@ -24,6 +24,8 @@ $(document).ready(function () {
 
         dz.addEventListener('drop', dropFile, false);
     }
+
+    $("#delete-by-name").on("click", removeBookByName);
 });
 
 //book object
@@ -96,13 +98,13 @@ function displayBooks() {
     for (var i = 0; i < localStorage.length; i++) {
         //clone elements
         var idCounter = "book-" + i;
-        var element = $(".book-record").clone().removeAttr("style").attr("id", idCounter).appendTo("body");
+        var element = $(".book-record").clone().removeAttr("style").attr("id", idCounter).appendTo(".book-display");
         // remove the class from the element to prevent double records getting created
         element.removeClass("book-record");
         var key = localStorage.key(i);
         var book = JSON.parse(localStorage.getItem(key));
 
-        var infoBlock = $("#"+idCounter).find('#book-info');
+        var infoBlock = $("#" + idCounter).find('#book-info');
 
         //create list of details for book information
         var bookKeys = ["name", "author", "isbn", "publisher", "price"];
@@ -111,10 +113,40 @@ function displayBooks() {
             $(infoBlock).append("<li>" + content + "</li>");
         });
 
-        if(book.image != ""){
+        if (book.image != "") {
             // only add image if the source is not null
-            $("#"+idCounter).find('#book-image').attr("src", book.image);
+            $("#" + idCounter).find('#book-image').attr("src", book.image);
         }
 
+        //add key to the button so it can identify the book and get the isbn
+        $("#" + idCounter).find('#delete').attr("rel", book.isbn).attr("pos", i);
+    }
+}
+
+/*
+ remove the item from local storage and hide the div in the dom
+ */
+function removeBook(e) {
+    var isbn = $(e).attr("rel");
+    var counter = $(e).attr("pos");
+    localStorage.removeItem(isbn);
+    $("#book-" + counter).fadeOut("slow");
+}
+
+
+/*
+remove book from local storage by name
+ */
+function removeBookByName() {
+    var bookName = $("#book-delete-title").val();
+    for (var i = 0; i < localStorage.length; i++) {
+        //search through local storage an see if there's a match for name
+        //if there is, remove it from local storage and reload the page
+        var key = localStorage.key(i);
+        var book = JSON.parse(localStorage.getItem(key));
+        if(bookName == book.name){
+            localStorage.removeItem(key);
+            window.location.reload();
+        }
     }
 }
