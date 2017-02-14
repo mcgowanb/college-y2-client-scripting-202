@@ -7,22 +7,23 @@ $(document).ready(function () {
         clearfields();
     });
 
-    $("#clear-list").on("click", function (e) {
+    $(".clear-list").on("click", function (e) {
         e.preventDefault();
         localStorage.clear();
         displayMessage("Storage has been emptied.")
     });
 
 
-    //drop zone for image
+    //drop zone for image If the element doesn't exist (as in the second page, don't add a listner)
     var dz = document.getElementById('book-cover');
+    if (dz != null) {
+        dz.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'copy';
+        }, false);
 
-    dz.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'copy';
-    }, false);
-
-    dz.addEventListener('drop', dropFile, false);
+        dz.addEventListener('drop', dropFile, false);
+    }
 });
 
 //book object
@@ -44,24 +45,21 @@ function addBook() {
     var image = "";
 
     //null check in case the book cover is not added
-    if(bookCoverImage != null){
-    image = bookCoverImage.src; //src
+    if (bookCoverImage != null) {
+        image = bookCoverImage.src; //src
     }
 
     var book = new Book(name, author, isbn, publisher, price, image);
     localStorage.setItem(isbn, JSON.stringify(book));
 }
 
-
+/*
+ Remove the field contents, clear the image and replace the text for dropping image
+ */
 function clearfields() {
     $("#book-name, #author, #isbn, #publisher, #price").val("");
-
-    // var elem = document.createElement('p').setAttribute("class", "text-center");
-    // console.log(elem);
-    // elem.text = "Drop book cover here";
     $("#book-cover").children("img:first").remove();
     $("#book-cover").append("<p class='text-center'>Drop book cover here</p>");
-    //book cover remove child
 }
 
 //simple display message that flashes in and out
@@ -88,4 +86,35 @@ function getSrcFromImage(file) {
         alert("There was an error reading the file");
     };
     reader.readAsDataURL(file);
+}
+
+/*
+ Clone the div for display. remove the clone class, add contents and insert into the dom
+ */
+function displayBooks() {
+    //loop through each book and add them to the element
+    for (var i = 0; i < localStorage.length; i++) {
+        //clone elements
+        var idCounter = "book-" + i;
+        var element = $(".book-record").clone().removeAttr("style").attr("id", idCounter).appendTo("body");
+        // remove the class from the element to prevent double records getting created
+        element.removeClass("book-record");
+        var key = localStorage.key(i);
+        var book = JSON.parse(localStorage.getItem(key));
+
+        var infoBlock = $("#"+idCounter).find('#book-info');
+
+        //create list of details for book information
+        var bookKeys = ["name", "author", "isbn", "publisher", "price"];
+        $.each(bookKeys, function (index, value) {
+            var content = value + " : " + book[value];
+            $(infoBlock).append("<li>" + content + "</li>");
+        });
+
+        if(book.image != ""){
+            // only add image if the source is not null
+            $("#"+idCounter).find('#book-image').attr("src", book.image);
+        }
+
+    }
 }
