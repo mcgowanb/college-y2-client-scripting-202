@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+
+    function addListeners(){
+        document.getElementById("submit").addEventListener("click", function(event){
+            event.preventDefault();
+            alert("Default action of submitting form was prevented");
+        });
+
+        document.getElementById("link").addEventListener("click", function(event){
+            event.preventDefault();
+            alert("Action was prevented here");
+        });
+    }
+
+</script>
+<body onload="addListeners()">
+<form action="#" >
+    <input type="submit" value="Submit" id="submit" onclick="stopAction(this)">
+</form>
+<a id="link" href="http://www.google.ie" target="_blank">Go to Google</a>
+</body>
+</html>

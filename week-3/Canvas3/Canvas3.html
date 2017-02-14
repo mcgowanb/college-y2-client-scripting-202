@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body onload="addEvents()">
+<script>
+function addEvents()
+{
+	document.getElementById('draw').addEventListener("click", draw, false);
+}
+
+function draw()
+{
+	var c = document.getElementById('canvas1');
+	var ctx = c.getContext('2d');
+	//We want a black rectangle 100 wide and 150 high
+	ctx.fillStyle = '#000000';
+	//Fill the rectangle
+    ctx.fillRect(0, 0, 100, 150);
+	
+	//We now want to draw a line - do not associate
+	//the line directly with the rectangle even it will
+	//end up looking like everything is linked.
+	ctx.beginPath();
+	//Set the line width to 10 pixels.
+    ctx.lineWidth = "10";
+	
+	//strokeStyle allows us to determine the colour of or line
+	ctx.strokeStyle = "white";
+	//moveTo() brings us to a specific part of the canvas
+	//but does not draw anything
+	//50 represents the x axis, 0 the y axis
+	//so we should be positioned at the top middle
+	//of the triangle
+    ctx.moveTo(50, 0);
+	
+	//adds a new point and creates a line from that point 
+	//THE BEST WAY TO EXPERIMENT WITH/UNDERSTAND THIS IS TO
+	//ADJUST THE VALUES
+	ctx.lineTo(50, 150);
+	//Draw the actual line
+	ctx.stroke();
+	//We need to start a new path 
+	//otherwise our previous line will be green.
+	ctx.beginPath();
+	ctx.strokeStyle="green";
+	ctx.moveTo(0, 75);
+    ctx.lineTo(100, 75);
+    ctx.stroke();
+}
+</script>
+<input type="button" id="draw" value="Draw" />
+<div><canvas id="canvas1"></canvas></div>
+</body>
+</html>

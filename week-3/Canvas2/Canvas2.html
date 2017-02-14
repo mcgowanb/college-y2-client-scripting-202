@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Canvas</title>
+</head>
+
+<body onload="addEvents()">
+<script>
+function addEvents()
+{
+	document.getElementById('draw').addEventListener("click", draw, false);
+}
+
+function draw()
+{
+	//Document this code line by line - are any lines unnecessary and why?
+	var c = document.getElementById('canvas1');
+	var ctx = c.getContext('2d');
+  	ctx.strokeStyle = "black";
+    //draw rectangle
+	ctx.strokeRect(0, 0, 100, 150);
+    //move pointer to top left
+	ctx.moveTo(0,0);
+    //create line to bottom right from top left
+	ctx.lineTo(100,150);
+    //draw line
+	ctx.stroke();
+    //move to bottom left
+	ctx.moveTo(100,0);
+    //make line to top right
+	ctx.lineTo(0,150);
+    //draw line
+	ctx.stroke();
+}
+</script>
+<input type="button" id="draw" value="Draw" />
+<div><canvas id="canvas1"></canvas></div>
+</body>
+</html>
