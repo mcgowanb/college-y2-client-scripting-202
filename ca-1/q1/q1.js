@@ -1,3 +1,9 @@
+/*
+ resources used for this are
+ http://stackoverflow.com/
+ http://api.jquery.com/
+ https://www.w3schools.com/
+ */
 var bookCoverImage;
 $(document).ready(function () {
     $("#add-book").on("click", function (e) {
@@ -6,6 +12,7 @@ $(document).ready(function () {
         displayMessage("Book added to storage");
         clearfields();
     });
+
 
     $(".clear-list").on("click", function (e) {
         e.preventDefault();
@@ -135,7 +142,7 @@ function removeBook(e) {
 
 
 /*
-remove book from local storage by name
+ remove book from local storage by name
  */
 function removeBookByName() {
     var bookName = $("#book-delete-title").val();
@@ -144,7 +151,7 @@ function removeBookByName() {
         //if there is, remove it from local storage and reload the page
         var key = localStorage.key(i);
         var book = JSON.parse(localStorage.getItem(key));
-        if(bookName == book.name){
+        if (bookName == book.name) {
             localStorage.removeItem(key);
             window.location.reload();
         }
