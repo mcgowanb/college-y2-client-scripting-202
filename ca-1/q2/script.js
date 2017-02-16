@@ -23,7 +23,6 @@ $(document).ready(function () {
     });
 
     $("delete").on("drop", function () {
-        console.log("sfsf");
     });
 });
 
@@ -49,7 +48,6 @@ function saveToStorage() {
 function drawShape() {
 
     var data = JSON.parse(localStorage.getItem("shape"));
-    console.log(data);
     var x = canvas.width / 2;
     var y = canvas.height / 2;
     //set the radius of the circle to the average of the width and height of the canvas
@@ -159,6 +157,8 @@ function allowDrop(e) {
 function drop(e) {
     var audio = new Audio('deleted.mp3');
     audio.play();
-    $(".removable").remove();
+    $(".removable").fadeOut("slow", function(){
+        $(this).remove();
+    });
     localStorage.clear();
 }
