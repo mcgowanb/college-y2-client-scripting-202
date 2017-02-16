@@ -1,5 +1,5 @@
 /*
-The following resources were used in this project
+ The following resources were used in this project
  http://stackoverflow.com/questions/21065458/trying-to-make-2-happy-sad-faces-with-canvas
  https://developer.mozilla.org/en-US/
  https://www.w3schools.com/
@@ -20,6 +20,10 @@ $(document).ready(function () {
     $("#draw").on("click", function (e) {
         e.preventDefault();
         drawShape();
+    });
+
+    $("delete").on("drop", function () {
+        console.log("sfsf");
     });
 });
 
@@ -69,7 +73,7 @@ function drawSmile(type, x, y, startAngle, radius) {
     var angle = Math.PI;
     var antiCloclwise = false;
 
-    if(type == "sad"){
+    if (type == "sad") {
         // reduce the radius of the arc to fit inside the circle
         // move the starting point of the circle further down
         radius -= 40;
@@ -107,7 +111,7 @@ function drawEyes(data, startAngle, endAngle, wink) {
     //right eye
     ctx.moveTo(rightX, centerY);
 
-    if(wink == "yes"){
+    if (wink == "yes") {
         //shrink the diameter for a wink & add the radius to the
         //center to draw the semi circle instead of the circle
         ctx.lineWidth = 8;
@@ -117,7 +121,7 @@ function drawEyes(data, startAngle, endAngle, wink) {
         ctx.lineWidth = getLineWidth(data.lineWidth);
 
     }
-    else{
+    else {
         ctx.arc(rightX, centerY, radius, startAngle, endAngle);
         ctx.stroke();
         ctx.fill();
@@ -146,4 +150,15 @@ function getLineWidth(size) {
             break;
     }
     return rVal;
+}
+
+function allowDrop(e) {
+    e.preventDefault();
+}
+
+function drop(e) {
+    var audio = new Audio('deleted.mp3');
+    audio.play();
+    $(".removable").remove();
+    localStorage.clear();
 }

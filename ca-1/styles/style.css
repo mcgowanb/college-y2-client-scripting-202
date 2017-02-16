@@ -41,3 +41,16 @@
 .glyphicon{
     float: right;
 }
+#delete{
+    width:350px;
+    height:350px;
+    border:1px dashed black;
+}
+#delete > span {
+    margin-top: 80px;
+    color: #777777;
+    padding-right: 60px;
+}
+#body{
+    margin: 10px;
+}
