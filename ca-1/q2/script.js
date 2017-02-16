@@ -1,3 +1,11 @@
+/*
+The following resources were used in this project
+ http://stackoverflow.com/questions/21065458/trying-to-make-2-happy-sad-faces-with-canvas
+ https://developer.mozilla.org/en-US/
+ https://www.w3schools.com/
+ */
+
+
 var canvas = document.getElementById("canvas");
 if (canvas != null) {
     var ctx = canvas.getContext("2d");
@@ -12,8 +20,6 @@ $(document).ready(function () {
     $("#draw").on("click", function (e) {
         e.preventDefault();
         drawShape();
-        // drawStar(500, 500, 5, 500, 120);
-
     });
 });
 
@@ -53,7 +59,6 @@ function drawShape() {
     ctx.fillStyle = data.background;
 
     //draw circle for face
-    // ctx.beginPath();
     drawFace(data, x, y, radius, startAngle, endAngle);
     drawEyes(data, startAngle, endAngle, data.wink);
     drawSmile(data.type, x, y, startAngle, radius);
@@ -62,27 +67,33 @@ function drawShape() {
 
 function drawSmile(type, x, y, startAngle, radius) {
     var angle = Math.PI;
+    var antiCloclwise = false;
 
     if(type == "sad"){
-
+        // reduce the radius of the arc to fit inside the circle
+        // move the starting point of the circle further down
+        radius -= 40;
+        y += radius;
+        //invert the arc to draw upwards, instead of down
+        antiCloclwise = true;
     }
 
-
     else if (type == "cheeky") {
+        // reduce the angle by half to draw a quarter circle instead of a semi circle
         angle = Math.PI / 2;
     }
 
     ctx.moveTo(110, 75);
     ctx.beginPath();
-    ctx.arc(x, y, radius - 50, startAngle, angle, false);
+    ctx.arc(x, y, radius - 50, startAngle, angle, antiCloclwise);
     ctx.stroke();
 }
 
 function drawEyes(data, startAngle, endAngle, wink) {
     var centerY = canvas.height / 3;
-    // position of left eye is 1 third of the canvas
+    // x position of left eye is 1 third of the canvas
     var leftX = canvas.width / 3;
-    //position of the right eye is 2 thirds of the canvas
+    // x position of the right eye is 2 thirds of the canvas
     var rightX = (canvas.height / 3) * 2;
     var radius = 10;
     ctx.fillStyle = data.lineColor;
@@ -97,6 +108,8 @@ function drawEyes(data, startAngle, endAngle, wink) {
     ctx.moveTo(rightX, centerY);
 
     if(wink == "yes"){
+        //shrink the diameter for a wink & add the radius to the
+        //center to draw the semi circle instead of the circle
         ctx.lineWidth = 8;
         ctx.moveTo(rightX + radius, centerY);
         ctx.arc(rightX, centerY, radius, startAngle, Math.PI);
