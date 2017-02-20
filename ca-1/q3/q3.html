@@ -1,0 +1,71 @@
+<!--CSS absolute positioning-->
+<!--http://stackoverflow.com/questions/6802956/how-to-position-a-div-in-a-specific-coordinates-->
+
+<!--Jquey animate-->
+<!--http://api.jquery.com/animate/-->
+
+<!--This is not necessarily a unique animation in jquery. In fact, I'm pretty sure its not. However, what I've tried to do is give-->
+<!--the animation a random time, easing and rotation for the image to go to, so every time the animation is called it will do a different animation-->
+<!--for a different period of time with a different rotation. I also change the image randomly as the animation loops to roate to a different image as it goes around
+I also made use of jqueryUI to give more easing effects for animation
+-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Q3</title>
+</head>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
+<script>
+    var screenWidth, screenHeight;
+    var animationTypes = ["linear", "swing", "easeOutBounce", "easeInBounce", "easeInOutBack", "easeOutExpo"];
+    $(document).ready(function () {
+        screenWidth = $(window).width();
+        screenHeight = $(window).height();
+        animate(2000, 0, getAnimation());
+    });
+
+
+    function animate(time, rotation, easing) {
+        var randomX = Math.floor(Math.random() * screenWidth);
+        var randomY = Math.floor(Math.random() * screenHeight);
+        $("#circle").animate({
+            "left": randomX + "px",
+            "top" : randomY + "px"
+        }, {
+            duration: time,
+
+            step: function() {
+                $(this).css('-webkit-transform','rotate('+rotation+'deg)');
+            },
+            easing: easing,
+            complete: function() {
+                //using ceiling to round up as there is no image with a 0 name
+                $("#icon").attr("src", "emoji/" + Math.ceil(Math.random() * 35) +".svg");
+                animate( Math.floor(Math.random() * 3000),  Math.floor(Math.random() * 360), getAnimation());
+            }
+        });
+    }
+
+    function getAnimation(){
+        var x = Math.floor(Math.random() * animationTypes.length) -1;
+        return animationTypes[x];
+    }
+</script>
+
+<style>
+    .image {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+    }
+</style>
+<body>
+<div class="image" id="circle"><img id="icon" src="emoji/1.svg" /></div>
+</body>
+</html>
