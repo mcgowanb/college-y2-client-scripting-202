@@ -25,8 +25,9 @@ I also made use of jqueryUI to give more easing effects for animation
     var screenWidth, screenHeight;
     var animationTypes = ["linear", "swing", "easeOutBounce", "easeInBounce", "easeInOutBack", "easeOutExpo"];
     $(document).ready(function () {
-        screenWidth = $(window).width();
-        screenHeight = $(window).height();
+        //subtracting 50 from the width and height to prevent the image going out of the bounds of the screen
+        screenWidth = $(window).width() - 50;
+        screenHeight = $(window).height() - 100;
         animate(2000, 0, getAnimation());
     });
 
