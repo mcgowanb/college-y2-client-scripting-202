@@ -3,6 +3,7 @@
  http://stackoverflow.com/
  http://api.jquery.com/
  https://www.w3schools.com/
+ All resources were used as general references for this project
  */
 var bookCoverImage;
 $(document).ready(function () {

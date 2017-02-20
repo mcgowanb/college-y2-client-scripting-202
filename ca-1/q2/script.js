@@ -3,6 +3,8 @@
  http://stackoverflow.com/questions/21065458/trying-to-make-2-happy-sad-faces-with-canvas
  https://developer.mozilla.org/en-US/
  https://www.w3schools.com/
+
+ W3Schools and MDN were both used as a general reference for dealing with canvas and drawing
  */
 
 
@@ -12,6 +14,7 @@ if (canvas != null) {
 }
 
 $(document).ready(function () {
+    //adding event listeners
     $("#next-page").on("click", function (e) {
         e.preventDefault();
         saveToStorage();
@@ -27,6 +30,7 @@ $(document).ready(function () {
 });
 
 
+// saving local storage
 function saveToStorage() {
     var type = $("#type").val();
     var wink = $("#wink").val();
@@ -44,6 +48,7 @@ function saveToStorage() {
     localStorage.setItem("shape", JSON.stringify(obj));
     window.location.href = "Render.html";
 }
+
 
 function drawShape() {
 
@@ -126,6 +131,7 @@ function drawEyes(data, startAngle, endAngle, wink) {
     }
 }
 
+//draws the initial face
 function drawFace(data, x, y, radius, startAngle, endAngle) {
     ctx.beginPath();
     ctx.arc(x, y, radius, startAngle, endAngle);
@@ -134,6 +140,7 @@ function drawFace(data, x, y, radius, startAngle, endAngle) {
     ctx.fill();
 }
 
+//returns an integer value to convert text size into digits.
 function getLineWidth(size) {
     var rVal;
     switch (size) {
@@ -150,10 +157,13 @@ function getLineWidth(size) {
     return rVal;
 }
 
+//preventing default action on drop
 function allowDrop(e) {
     e.preventDefault();
 }
 
+
+// clearing local storage, removing the canvas and playing the sound
 function drop(e) {
     var audio = new Audio('deleted.mp3');
     audio.play();
