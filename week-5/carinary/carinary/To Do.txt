@@ -1,0 +1,24 @@
+For the website template (using jQuery) - NOTE, You don't need to reference the jQuery file - it's already in the template
+
+__________________________________________________
+
+1. When the 'Carinary' logo (<div> with an id of logo) is clicked, make 2 CSS changes to the logo
+$('#logo').click(function(){
+	$(this).css({"background-color":"red", "opacity":"0.25"});
+});
+
+(Note: It will be easier to work with if you remove the <a> element
+
+2. When the mouse is hovered over the footer area, make 1 style change each to any 4 elements
+
+3. When the 'quickinfo' div is clicked, fadeout the div over a period of 3 seconds, and fade it back in over a period
+of two seconds. Use chaining.
+
+4. When the <div> with the class 'group testimonials' is clicked, remove it.
+(use this ->$('.testimonials').click
+
+5. When the mouse is hovered over the video placeholder (give it an id of 'video' first), perform an animation on it
+
+6. Give 4 paragraphs on the page unique id's - perform 1 change on each paragraph when it is clicked. Use css(),
+html(), removeClass() and animate()
+
