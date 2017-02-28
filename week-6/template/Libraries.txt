@@ -1,0 +1,5 @@
+AngularJS (Google et al.) - Framework?
+jQuery (jQuery Development Team) - Library?
+jcarousel (Jan Sorgella) - Plugin?
+Backbone (Jeremy Ashkenas) - library/plugin/framework/tool?
+Underscore (Jeremy Ashkenas) - library?
