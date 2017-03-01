@@ -1,0 +1,3 @@
+1. Review the code and test if it actually works
+2. See which parts of the code could be cut down (write less, do more) and do so
+3. Understand the code by stepping through it
