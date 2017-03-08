@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script> 
+$(document).ready(function() {
+	//Typically when using find(), chain an action
+	//find() is not used all that often as we can get at elements with selectors of one form or another
+	var x = $("body").find("p:eq(0)").text();
+	var y = $("p").find("strong").text();
+	var z = $("#endp").find("strong").text();
+	alert("x is: " + x + " y is: " + y + " z is: " + z);
+}); 
+
+</script>
+</head>
+<body>
+<p><strong>first</strong></p>
+<p class="midp">middle</p>
+<p id="endp"><strong>last</strong></p>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<!-- 1. Link to jQuery (1.8 or later), -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+
+<!-- fotorama.css & fotorama.js. -->
+<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
+<script src="jquery.zoomooz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+    $("#img1").on("click", function() {
+		$("#img1").zoomTo({targetsize:.5, duration:600});
+	});
+})
+</script>
+</head>
+
+<body>
+<!-- 2. Add images to <div class="fotorama"></div>. -->
+<div class="fotorama"
+     data-width="800"
+     data-height="600"
+     data-nav="thumbs"
+     data-allowfullscreen="true">
+  <img src="desert.jpg" data-caption="Random Image Caption" alt="">
+  <img src="img2.jpg" alt="">
+  <img src="img3.jpg" alt="">
+  <img src="img4.jpg" alt="">
+  <img src="img1.jpg" alt="">
+</div>
+<div>
+<img src="img2.jpg" id="img1" alt="">
+</div>
+</body>
+</html>

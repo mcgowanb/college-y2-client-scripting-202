@@ -28,6 +28,8 @@
 //:nth-child() selects all elements that are the nth-child of their parent.
 //:eq() selects the element at index n within the matched set.
 
+//10. Code two examples each of html(), attr(), text(), eq() and nth-child() - you are not required to use attribute selectors
+
 $(document).ready(function(e) {
     //1
 	$('input[type=text]').hover(function(){
@@ -42,6 +44,7 @@ $(document).ready(function(e) {
         e.preventDefault();
         var x = $("img[src*='320']");
         alert("There are " + x.length + " results");
+        //$(this).remove();
     });
 
     //3
@@ -63,4 +66,8 @@ $(document).ready(function(e) {
     $("ul.nospace.linklist a").text("test link").on("click", function(){
         $(this).attr("href", "http://www.itsligo.ie");
     });
+
+    $('button[type=submit]').on("click", function(){
+      $('button').html("Ha Ha!");
+    })
 });
