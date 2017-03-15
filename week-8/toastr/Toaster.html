@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Toaster Notification</title>
+    <!-- Toaster requires bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!--Toaster requires jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!--We use the toaster plugin to display notifications-->
+    <script src="jquery.toaster.js"></script>
+</head>
+
+<body>
+<script>
+    $(document).ready(function (e) {
+
+
+//The basic premise of a toaster notification is that it displays a message for a set duration with no user interaction
+//i.e. there are no 'OK' 'Close' buttons for the user to interact with
+
+//The basic premise is that you display a message for a fixed time
+        $.toaster({message: 'Your message here'});
+//You can alter the time and other settings
+        $.toaster({settings: {'timeout': 4000}});
+//You can obviously customise the message
+        $.toaster({message: 'This toast has a longer duration'});
+
+
+//We will need to accept the event as an argument
+//in order to detect which key was pressed
+        $("body").on("keypress", function (ev) {
+            var keyPress = ev.keyCode;
+
+            if (keyPress === 65) {
+                //'A' was pressed
+                processBasicMessage();
+            }
+
+            if (keyPress === 66) {
+                //'B' was pressed
+                processStyledMessage();
+            }
+        });
+
+        function processBasicMessage() {
+            //The message and title can be whatever you like
+            //Priority can be any one of 'success', 'danger', 'info', 'warning'
+            $.toaster({
+                message: 'You have enabled a basic toastr notification!',
+                title: 'Basic Notification',
+                priority: 'danger'
+            });
+            //Task 1: Adjust the above line of code to see the difference between the 4 priority settings
+        }
+
+        function processStyledMessage() {
+            $.toaster({settings: {'timeout': 6500}});
+            $.toaster({message: 'You have altered toastr settings!', title: 'Styled Notification', priority: 'info'});
+            //Task 2: See if you can alter any other settings
+            //Task 3: View the site here: https://github.com/scottoffen/jquery.toaster#toaster
+            //See if you can determine what they have to say about the concept of a toast
+            //Task 4: List 2 possible advantages and two possible disadvantages of these
+            //approaches to providing users with information
+            //Task 5: Get this notification plugin working with one of the templates
+            //we used last week
+            //Task 6: View another notification plugin here: https://codeseven.github.io/toastr/
+            //and see if you can get an example working
+        }
+
+    });
+</script>
+</body>
+</html>
