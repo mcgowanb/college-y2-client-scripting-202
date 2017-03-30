@@ -214,9 +214,10 @@ ClientBin/
 #IDEA Files
 **.idea*
 
+CA-2*
+
 #zip
 **.zip
 **.mp4
 **.db
-
 ca-2*
