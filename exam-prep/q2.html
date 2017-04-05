@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+    function drawImage(){
+        var c = document.getElementById('canvas');
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.lineTo(0,85);
+        ctx.lineTo(15, 100);
+        ctx.lineTo(0, 115);
+        ctx.lineTo(0, 200);
+        ctx.lineTo(100,200);
+        ctx.lineTo(100,115);
+        ctx.lineTo(85,100);
+        ctx.lineTo(100,85);
+        ctx.lineTo(100,0);
+        ctx.lineTo(0,0);
+        ctx.closePath();
+        ctx.strokeStyle = "grey";
+        ctx.lineWidth = 5;
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.rect(25,15, 50, 50);
+        ctx.closePath();
+        ctx.fillStyle = "white";
+        ctx.fill();
+        ctx.stroke();
+    }
+</script>
+
+<body onload="drawImage()">
+<div><canvas id="canvas" width="500px" height="500px"></canvas></div>
+</body>
+</html>
