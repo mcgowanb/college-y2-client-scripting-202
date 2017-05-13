@@ -12,7 +12,7 @@ $(document).ready(function () {
     });
 
     $("li:nth-child(2)").html("<p class='new-par'>New paragraph</p>").next().on("click", function () {
-        alert("s'goin bai?");
+        alert("Method chaining in action ");
     });
 
     $("#top").keyup(function () {
@@ -44,7 +44,6 @@ $(document).ready(function () {
     });
 
     $('a[href$=".com/"]').on("click", function (e) {
-        e.preventDefault();
         $(this).attr("href", "http://www.itsligo.ie");
     });
 
