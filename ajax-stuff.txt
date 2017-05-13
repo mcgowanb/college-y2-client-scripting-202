@@ -1,0 +1,13 @@
+AJAX stands for asynchronous javascript and xml. Its used to make asynchronus calls to a webserver (in the background) to update part of the page content and other functionality without having to reload the entire page
+
+XMLHttpRequest() is the JS api that provides functionality to make ajax calls
+
+onreadystatechange is an event handler that's triggered every time the state of an XMLHttpRequest changes. It can generally be assigned to a callback function to take some action depending on the current ready state as it changes
+
+readyState returns the state of the current XMLHttpRequest, and can be a number between 0 (unsent) and 4 (done)
+
+responseText contains the response that's received from the request once its compelted., it can be null if the request failed or has not yet been sent
+
+open() initialises the request
+
+send() sends the request that's been created and opened

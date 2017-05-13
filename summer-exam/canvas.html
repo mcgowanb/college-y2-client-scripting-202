@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+    function drawImage(){
+        var c = document.getElementById('canvas');
+        var ctx = c.getContext("2d");
+        ctx.fillStyle="#000";
+        ctx.lineWidth=3;
+        //house
+        ctx.rect(20,200,460,300);
+        ctx.stroke();
+
+        //window
+        ctx.fillRect(40,220,200,100);
+        ctx.stroke();
+
+        //window
+        ctx.fillRect(260,220,200,100);
+        ctx.stroke();
+
+        ctx.fillRect(260,340,200,100);
+        ctx.stroke();
+
+        //window lines
+        ctx.beginPath();
+        ctx.moveTo(40,270);
+        ctx.lineTo(470,270);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth=5;
+        ctx.stroke();
+
+        //window lines
+        ctx.beginPath();
+        ctx.moveTo(260,390);
+        ctx.lineTo(470,390);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth=5;
+        ctx.stroke();
+
+        //window lines
+        ctx.beginPath();
+        ctx.moveTo(140,210);
+        ctx.lineTo(140,330);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth=5;
+        ctx.stroke();
+
+        //window lines
+        ctx.beginPath();
+        ctx.moveTo(360,210);
+        ctx.lineTo(360,480);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth=5;
+        ctx.stroke();
+
+        //roof
+        ctx.beginPath();
+        ctx.moveTo(20,200);
+        ctx.lineTo(240,20);
+        ctx.lineTo(480,200);
+        ctx.lineWidth=3;
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+
+        //chimney
+        ctx.beginPath();
+        ctx.rect(340,40,40,140);
+        ctx.fillStyle="#fff";
+        ctx.fill();
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(330,180);
+        ctx.lineTo(390,180);
+        ctx.lineWidth=5;
+        ctx.strokeStyle = '#fff';
+        ctx.stroke();
+
+        //doors
+        ctx.beginPath();
+        ctx.moveTo(140,500);
+        ctx.lineTo(140,370);
+
+        ctx.moveTo(70,500);
+        ctx.lineTo(70,370);
+
+        ctx.moveTo(210,500);
+        ctx.lineTo(210,370);
+        ctx.lineWidth=2;
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+
+        //door handles
+        ctx.beginPath();
+        ctx.arc(130, 440,3,0,2*Math.PI);
+        ctx.stroke();
+
+        //door handles
+        ctx.beginPath();
+        ctx.arc(150, 440,3,0,2*Math.PI);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(70,370);
+        ctx.lineTo(210,370);
+        ctx.stroke();
+
+    }
+</script>
+
+
+<body onload="drawImage()">
+<div><canvas id="canvas" width="750px" height="750px"></canvas></div>
+</body>
+</html>
